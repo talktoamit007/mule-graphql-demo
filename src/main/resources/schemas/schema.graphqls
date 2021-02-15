@@ -1,0 +1,20 @@
+schema {
+	query: Query
+}
+
+type Query{
+	account(
+		id:String
+	): Account
+}
+
+type Account {
+	id: String
+	firstName: String
+	lastName: String
+	address: String
+	website: String
+	company: String
+	phone: String
+	accountType: String
+}

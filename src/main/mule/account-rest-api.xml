@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="5531814c-dba7-42c7-9f61-e51f79e8263f" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="account-rest-apiFlow" doc:id="1bab461f-1318-4989-b119-271b82d758e2" >
+		<http:listener doc:name="Listener" doc:id="d2e54177-1292-4669-ae86-87bccdd445c0" config-ref="HTTP_Listener_config" path="/accounts/{accountId}"/>
+		<file:read doc:name="Read" doc:id="4ffd51af-ef4a-4c9b-9a0b-09270134834f" path="D:\Prj Disability\workspace-disability-latest\mule-graphql-demo\src\main\resources\accounts.json"/>
+	</flow>
+	<flow name="account-rest-apiFlow1" doc:id="687436f5-cabd-4b17-a803-c404fed5d56d" >
+		<http:listener doc:name="Listener" doc:id="07d3aeec-7ef1-486f-a146-4f7acd4d8720" config-ref="HTTP_Listener_config" path="/accounts/{accountId}/balances"/>
+		<file:read doc:name="Read" doc:id="70b7fb04-673c-46a7-affb-2c04e39e3730" path="D:\Prj Disability\workspace-disability-latest\mule-graphql-demo\src\main\resources\balances.json"/>
+	</flow>
+</mule>
